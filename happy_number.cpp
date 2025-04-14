@@ -18,7 +18,7 @@ std::set<int> seen;
 
 bool isHappyNum(int num)
 {
-    int val = sums_of_square_of_digits(num);
+    int val = sum_of_squared_of_digits(num);
 
     if (seen.count(val))
         return false;
