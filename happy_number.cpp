@@ -1,31 +1,38 @@
 #include <iostream>
+#include <set>
 
-int factorial(int n)
+int sums_of_square_of_digits(int nums)
 {
-    int result = 1;
-    if (n == 0)
-        return 1;
-
-    for (int i = 1; i < n + 1; i++)
+    int result = 0;
+    std::string nums_str = std::to_string(nums);
+    for (int i = 0; i < nums_str.length(); i++)
     {
-        result *= i;
+        int val = nums_str[i] - '0';
+        result += val * val;
     }
 
     return result;
 }
 
-bool isHappyNum(int num) {
-    std::string num_str = std::to_string(num);
-    int sum = 0;
-    for (int i = 0; i < num_str.length(); i++) {
-        sum += factorial(num_str[i] - '0');
-    }
+std::set<int> seen;
 
-    return (std::to_string(sum) == num_str);
+bool isHappyNum(int num)
+{
+    int val = sums_of_square_of_digits(num);
+
+    if (seen.count(val))
+        return false;
+
+    seen.insert(val);
+
+    if (val == 1)
+        return true;
+        
+    return isHappyNum(val);
 }
 
 int main()
 {
-    std::cout << isHappyNum(145);
+    std::cout << isHappyNum(19);
     return 0;
 }
