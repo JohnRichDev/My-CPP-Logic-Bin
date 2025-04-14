@@ -1,7 +1,7 @@
 #include <iostream>
 #include <set>
 
-int sums_of_square_of_digits(int nums)
+int sum_of_squared_of_digits(int nums)
 {
     int result = 0;
     std::string nums_str = std::to_string(nums);
@@ -27,7 +27,7 @@ bool isHappyNum(int num)
 
     if (val == 1)
         return true;
-        
+
     return isHappyNum(val);
 }
 
