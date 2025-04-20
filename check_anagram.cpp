@@ -1,25 +1,21 @@
 #include <iostream>
-#include <set>
+#include <algorithm>
 
 bool is_anagram(std::string str1, std::string str2)
 {
     if (str1.length() != str2.length())
         return false;
-    std::set<char> a;
-    std::set<char> b;
-    for (int i = 0; i < str1.length(); i++)
-    {
-        a.insert(str1[i]);
-        b.insert(str2[i]);
-    }
 
-    return (a == b);
+    std::sort(str1.begin(), str1.end());
+    std::sort(str2.begin(), str2.end());
+
+    return (str1 == str2);
 }
 
 int main()
 {
-    std::string a = "triangle";
-    std::string b = "integral";
+    std::string a = "bbcc";
+    std::string b = "ccbc";
     std::cout << is_anagram(a, b);
     return 0;
 }
